@@ -11,7 +11,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [emails, setEmails] = useState([]);
   // const SERVER_URI = import.meta.env.VITE_SERVER_URI || 'http://localhost:9000';
-  const SERVER_URI = 'http://13.233.114.84:9000';
+  const SERVER_URI = 'https://seal-app-ez3bm.ondigitalocean.app/';
   // 13.233.114.84
 
   useEffect(() => {
