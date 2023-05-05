@@ -6,7 +6,7 @@ import './styles/style.scss';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // const SERVER_URI = import.meta.env.VITE_SERVER_URI || 'http://localhost:9000';
-const SERVER_URI = 'https://seal-app-ez3bm.ondigitalocean.app/';
+const SERVER_URI = 'https://seal-app-ez3bm.ondigitalocean.app';
 
 root.render(
   <React.StrictMode>
