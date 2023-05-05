@@ -5,7 +5,8 @@ import { NylasProvider } from '@nylas/nylas-react';
 import './styles/style.scss';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-const SERVER_URI = import.meta.env.VITE_SERVER_URI || 'http://localhost:9000';
+// const SERVER_URI = import.meta.env.VITE_SERVER_URI || 'http://localhost:9000';
+const SERVER_URI = 'http://13.233.114.84:9000';
 
 root.render(
   <React.StrictMode>
