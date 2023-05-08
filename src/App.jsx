@@ -10,8 +10,8 @@ function App() {
   const [userEmail, setUserEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [emails, setEmails] = useState([]);
-  // const SERVER_URI = import.meta.env.VITE_SERVER_URI || 'http://localhost:9000';
-  const SERVER_URI = 'https://seal-app-ez3bm.ondigitalocean.app';
+  const SERVER_URI = import.meta.env.VITE_SERVER_URI || 'http://localhost:9000';
+  // const SERVER_URI = 'https://seal-app-ez3bm.ondigitalocean.app';
   // 13.233.114.84
 
   useEffect(() => {
@@ -79,6 +79,25 @@ function App() {
     setIsLoading(false);
   };
 
+  const generateReplies = async () => {
+    setIsLoading(true);
+    try {
+      const url = SERVER_URI + '/nylas/read-email-gpt';
+      const res = await fetch(url, {
+        method: 'GET',
+        headers: {
+          Authorization: userId,
+          'Content-Type': 'application/json',
+        },
+      });
+      console.log('this is res', res)
+    } catch (e) {
+      console.warn(`Error generating replies:`, e);
+      return false;
+    }
+    setIsLoading(false);
+  };
+
   const disconnectUser = () => {
     sessionStorage.removeItem('userId');
     sessionStorage.removeItem('userEmail');
@@ -90,11 +109,17 @@ function App() {
     getEmails();
   };
 
+  const generateReplyFromGPT = () => {
+    generateReplies();
+    alert('Replies generated and saved in database');
+  };
+
   return (
     <Layout
       showMenu={!!userId}
       disconnectUser={disconnectUser}
       refresh={refresh}
+      generateReply={generateReplyFromGPT}
       isLoading={isLoading}
     >
       {!userId ? (
